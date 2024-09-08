@@ -1,4 +1,4 @@
-import { ProfileData } from "./common";
+import { ProfileData } from "../common-types";
 import ProfileCardContent from "./ProfileCardContent";
 import ProfileCardHeader from "./ProfileCardHeader";
 

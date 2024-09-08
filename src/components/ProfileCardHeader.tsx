@@ -1,4 +1,4 @@
-import { ProfileData } from "./common";
+import { ProfileData } from "../common-types";
 
 const ProfileCardHeader = ({ profile }: { profile: ProfileData }) => {
   return (

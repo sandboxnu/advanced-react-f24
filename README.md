@@ -8,7 +8,7 @@ Use `npm run dev` to start the application
 
 ## List of Goals
 
-There are 3 main open-ended exercises for this workshop. Feel free to collaborate with eachother, and consult outside resources.
+There are 3 main open-ended exercises for this workshop. You are encouraged to collaborate with each other, and consult outside resources.
 
 1. Prop drilling, context, and state management
 2. Understanding effects
@@ -24,19 +24,32 @@ Deliverable: After this step, `Profile`, `ProfileCard`, `ProfileCardContent`, an
 
 ### 2) Understanding useEffect
 
-The goal of the first exercise is to identify some of the bad practices of `useEffect` in React code.
+The goal of the first exercise is to identify some of the bad practices of `useEffect` in React code. There are 2 bugs to fix in the code.
 
-First, open the browser console by right clicking the window and clicking "inspect" or by using your device's shortcut, and then clicking "console" in the menu bar.
+1.  First, open the browser console by right clicking the window and clicking "inspect" or by using your device's shortcut, and then clicking "console" in the menu bar.
 
-You will notice that when you click "change user" the app logs a few things to the console. It will log a debug statement, that is just for demonstration purposes. It will also print "rendering app" 2 times. If it does not render 2 times, let us know before progressing.
+    You will notice that when you click "change user" the app logs a few things to the console. It will log a debug statement, that is just for demonstration purposes. It will also print "rendering app" 2 times. If it does not render 2 times, let us know before progressing.
 
-The goal of this exercise is to only have the app render a single time when changing users, such that "rendering app" only is printed to the console once.
+    The goal of this exercise is to only have the app render a single time when changing users, such that "rendering app" only is printed to the console once.
 
-It is important to note that the app is _not_ running in React strict mode.
+    It is important to note that the app is _not_ running in React strict mode.
 
-You should only need to modify code in the `App.tsx` file. Hint: there are two changes you will need to make, use the slides to help you. One of them is more obvious than the other.
+    You should only need to modify code in the `App.tsx` file.
 
-Deliverable: After this step, clicking the change user button should only print "rendering app" to the console twice, not four times.
+2.  The second task is the fix the broken timer in the `useSecondsElapsed` hook.
+
+    Currently, it does not accurately count time after switching profiles. While it does properly, reset to zero, you'll notice it fails to accuraretely count seconds.
+
+    You should only need to modify code in `useSecondsElapsed.tsx`
+
+Deliverables:
+
+1. Clicking the change user button should only print "rendering app" to the console twice, not four times.
+2. The timer should count seconds accurately
+
+### 3) Building your first custom hook
+
+This task is a bit more open ended. The goal is to create a hook called `useProfileViews` which tracks the total number of views each profile has received in the current session (it lives in memory and will reset when the user reloads the page). If you would like to challenge yourself, feel free to try and make the hook persist across sessions!
 
 ## Sample Solution
 

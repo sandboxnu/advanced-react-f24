@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Profile from "./Profile";
-import { ProfileData } from "./common";
+import Profile from "./components/Profile";
+import { ProfileData } from "./common-types";
 import "./styles.css";
 
-const users: ProfileData[] = [
+const Users: ProfileData[] = [
   {
     avatar: "https://avatars.githubusercontent.com/u/1",
     job: "Steampunk Inventor",
@@ -32,32 +32,43 @@ const users: ProfileData[] = [
     firstName: "Graham",
     lastName: "Frost",
   },
+  {
+    avatar: "https://avatars.githubusercontent.com/u/5",
+    job: "Oceanographer",
+    bio: "Aria, the intrepid oceanographer, sets sail on a sandbox sea, her ship cutting through the waves as she charts the unexplored depths below. Her days are spent diving into the unknown, discovering new species of fish and coral, and unraveling the mysteries of the underwater world. Aria's love for the ocean is as deep as the sea itself, and she believes that every creature, from the tiniest shrimp to the mightiest whale, has a story worth telling. With a keen eye for detail and a heart full of wonder, Aria is on a quest to protect the oceans and all who call them home, perchance ensuring that their beauty will endure for generations to come.",
+    firstName: "Aria",
+    lastName: "Waverly",
+  },
+  {
+    avatar: "https://avatars.githubusercontent.com/u/6",
+    job: "Time Traveler",
+    firstName: "Ezra",
+    lastName: "Quinn",
+    bio: "Ezra, the daring time traveler, hurtles through the ages in a sandbox-powered time machine, their trusty compass in hand and their heart set on unraveling the mysteries of the past and future. With each journey, they discover new civilizations, witness historic events, and learn the secrets of forgotten worlds. Ezra's passion for exploration is matched only by their insatiable curiosity, and they believe that the key to understanding our present lies in understanding our past. Armed with their boundless imagination and a thirst for knowledge, Ezra embarks on endless adventures, forever chasing the elusive threads that connect us all.",
+  },
 ];
 
 const App = () => {
   useEffect(() => {
     // This useEffect hook is just for demonstration purposes
+    // No need to modify this code
     console.log("[DEBUG]", "App component mounted");
     return () => {
       console.log("[DEBUG]", "App component unmounted");
     };
   }, []);
 
+  // DO NOT REMOVE
   console.log("rendering app");
 
-  const [profilesViewed, setProfilesViewed] = useState(0);
   const [profileData, setProfileData] = useState<ProfileData>(
-    () => users[Math.floor(Math.random() * users.length)]
+    () => Users[Math.floor(Math.random() * Users.length)]
   );
   const [fullName, setFullName] = useState<string>();
 
   useEffect(() => {
     setFullName(`${profileData.firstName} ${profileData.lastName}`);
   }, [profileData.firstName, profileData.lastName]);
-
-  useEffect(() => {
-    setProfilesViewed((prevProfilesViewed) => prevProfilesViewed + 1);
-  }, [profileData]);
 
   return (
     <main>
@@ -66,15 +77,14 @@ const App = () => {
         onClick={() =>
           setProfileData(
             (prevProfileData) =>
-              users.filter(
+              Users.filter(
                 (user) => user.firstName !== prevProfileData.firstName
-              )[Math.floor(Math.random() * (users.length - 1))]
+              )[Math.floor(Math.random() * (Users.length - 1))]
           )
         }
       >
-        Change User
+        Randomize User
       </button>
-      <div>Profiles viewed: {profilesViewed}</div>
       <Profile profile={profileData} />
     </main>
   );
