@@ -51,6 +51,8 @@ Deliverables:
 
 This task is a bit more open ended. The goal is to create a hook called `useProfileViews` which tracks the total number of views each profile has received in the current session (it lives in memory and will reset when the user reloads the page). If you would like to challenge yourself, feel free to try and make the hook persist across sessions!
 
+Deliverables: The profile views for that profile should be displayed on each profile. Loading a profile should increment the views for that profile.
+
 ## Sample Solution
 
 Take a look at the `solution` branch to see what I did to complete these tasks

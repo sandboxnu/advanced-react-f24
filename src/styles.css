@@ -70,6 +70,10 @@ p {
   min-width: auto;
 }
 
+.profile-card-header {
+  margin-bottom: 20px;
+}
+
 .profile-card-header img {
   border-radius: 4px;
   margin-bottom: 20px;

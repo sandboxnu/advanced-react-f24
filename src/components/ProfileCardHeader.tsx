@@ -5,6 +5,7 @@ const ProfileCardHeader = ({ profile }: { profile: ProfileData }) => {
     <div className="profile-card-header">
       <h2>{profile.firstName}</h2>
       <img src={profile.avatar} alt={profile.firstName} />
+      <div>Profile Views [NOT YET IMPLEMENTED]</div>
     </div>
   );
 };
