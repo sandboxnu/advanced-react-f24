@@ -1,6 +1,7 @@
-import { ProfileData } from "../common-types";
+import { useProfile } from "../hooks/useProfile";
 
-const ProfileCardContent = ({ profile }: { profile: ProfileData }) => {
+const ProfileCardContent = () => {
+  const profile = useProfile();
   return <p>{profile.bio}</p>;
 };
 

@@ -1,12 +1,11 @@
-import { ProfileData } from "../common-types";
 import ProfileCardContent from "./ProfileCardContent";
 import ProfileCardHeader from "./ProfileCardHeader";
 
-const ProfileCard = ({ profile }: { profile: ProfileData }) => {
+const ProfileCard = () => {
   return (
     <div className="profile-card">
-      <ProfileCardHeader profile={profile} />
-      <ProfileCardContent profile={profile} />
+      <ProfileCardHeader />
+      <ProfileCardContent />
     </div>
   );
 };

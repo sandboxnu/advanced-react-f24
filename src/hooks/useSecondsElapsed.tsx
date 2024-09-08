@@ -13,9 +13,15 @@ export const useSecondsElapsed = (key: string) => {
     // Reset the timer when the key changes
     setSecondsElapsed(0);
 
-    setInterval(() => {
+    const interval = setInterval(() => {
       setSecondsElapsed((prevTime) => prevTime + 1);
     }, 1000);
+
+    // We return a cleanup function to clear the interval when the component is unmounted
+    // That way, we don't have multiple intervals running at the same time
+    return () => {
+      clearInterval(interval);
+    };
   }, [key]);
 
   return secondsElapsed;

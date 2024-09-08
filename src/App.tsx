@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Profile from "./components/Profile";
 import { ProfileData } from "./common-types";
 import "./styles.css";
+import { ProfileContext } from "./context";
 
 const Users: ProfileData[] = [
   {
@@ -64,11 +65,14 @@ const App = () => {
   const [profileData, setProfileData] = useState<ProfileData>(
     () => Users[Math.floor(Math.random() * Users.length)]
   );
-  const [fullName, setFullName] = useState<string>();
 
-  useEffect(() => {
-    setFullName(`${profileData.firstName} ${profileData.lastName}`);
-  }, [profileData.firstName, profileData.lastName]);
+  // const [fullName, setFullName] = useState<string>();
+  // useEffect(() => {
+  //   setFullName(`${profileData.firstName} ${profileData.lastName}`);
+  // }, [profileData.firstName, profileData.lastName]);
+  const fullName = `${profileData.firstName} ${profileData.lastName}`;
+  // Instead of using the useEffect hook above, we can just calculate the full name directly in the JSX
+  // This prevents unnecessary double rendering when the profileData changes
 
   return (
     <main>
@@ -85,7 +89,9 @@ const App = () => {
       >
         Randomize User
       </button>
-      <Profile profile={profileData} />
+      <ProfileContext.Provider value={profileData}>
+        <Profile />
+      </ProfileContext.Provider>
     </main>
   );
 };
