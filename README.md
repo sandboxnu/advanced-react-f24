@@ -53,6 +53,12 @@ This task is a bit more open ended. The goal is to create a hook called `useProf
 
 Deliverables: The profile views for that profile should be displayed on each profile. Loading a profile should increment the views for that profile.
 
+## Submission
+
+Please create a pull request to the repository on GitHub. Mention your partner's name within the description, as well as any outstanding questions you might have.
+
+We'll leave feedback for you there, no need to merge.
+
 ## Sample Solution
 
-Take a look at the `solution` branch to see what I did to complete these tasks
+When you are finished, take a look at the `solution` branch to see what I did to complete these tasks
