@@ -1,13 +1,19 @@
-import { ProfileData } from "../common-types";
 import { useProfileViews } from "../hooks/useProfileViews";
+import { Context } from "../Context";
+import { useContext } from "react";
 
-const ProfileCardHeader = ({ profile }: { profile: ProfileData }) => {
-  const profileViews = useProfileViews(profile.firstName);
+const ProfileCardHeader = () => {
+  const profile = useContext(Context);
+
+  if (!profile) {
+    return <div>Loading profile...</div>;
+  }
+  
   return (
     <div className="profile-card-header">
       <h2>{profile.firstName}</h2>
       <img src={profile.avatar} alt={profile.firstName} />
-      <div>Profile Views {profileViews}</div>
+      <div>Profile Views {useProfileViews(profile.firstName)}</div>
     </div>
   );
 };
