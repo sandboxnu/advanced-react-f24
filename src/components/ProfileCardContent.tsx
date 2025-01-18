@@ -1,6 +1,8 @@
 import { ProfileData } from "../common-types";
+import { useProfile } from "../ProfileContext";
 
-const ProfileCardContent = ({ profile }: { profile: ProfileData }) => {
+const ProfileCardContent = () => {
+  const profile = useProfile();
   return <p>{profile.bio}</p>;
 };
 

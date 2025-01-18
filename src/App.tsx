@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Profile from "./components/Profile";
 import { ProfileData } from "./common-types";
 import "./styles.css";
+import { ProfileContext } from "./ProfileContext"
 
 const Users: ProfileData[] = [
   {
@@ -66,26 +67,30 @@ const App = () => {
   );
   const [fullName, setFullName] = useState<string>();
 
-  useEffect(() => {
-    setFullName(`${profileData.firstName} ${profileData.lastName}`);
-  }, [profileData.firstName, profileData.lastName]);
+  const handleClick = () => {
+    setProfileData(
+    (prevProfileData) =>
+      Users.filter(
+        (user) => user.firstName !== prevProfileData.firstName
+      )[Math.floor(Math.random() * (Users.length - 1))]
+  );
+  setFullName(`${profileData.firstName} ${profileData.lastName}`);
+};
 
   return (
     <main>
       <h1>Welcome to {fullName}'s Page</h1>
       <button
         onClick={() =>
-          setProfileData(
-            (prevProfileData) =>
-              Users.filter(
-                (user) => user.firstName !== prevProfileData.firstName
-              )[Math.floor(Math.random() * (Users.length - 1))]
-          )
+          handleClick()
         }
       >
         Randomize User
       </button>
-      <Profile profile={profileData} />
+      <ProfileContext.Provider value = {profileData}>
+        <Profile />
+      </ProfileContext.Provider>
+      
     </main>
   );
 };

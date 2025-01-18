@@ -1,7 +1,9 @@
 import { ProfileData } from "../common-types";
 import { useProfileViews } from "../hooks/useProfileViews";
+import { useProfile } from "../ProfileContext";
 
-const ProfileCardHeader = ({ profile }: { profile: ProfileData }) => {
+const ProfileCardHeader = () => {
+  const profile = useProfile();
   const profileViews = useProfileViews(profile.firstName);
   return (
     <div className="profile-card-header">
